@@ -3,11 +3,11 @@
                        The Speckle Programming Language
 ===============================================================================
 Core Engine Production Platform (.spk / .speckle / .sp / .pk)
-Advanced Features: Mutable Scopes, Chat Networking Simulation, Console IO
+Advanced Stack: Byte Decoding, ASCII-Textify Pipelines, Math, Vector Graphics
 
 Architecture Blueprint:
-  1. Lexer (Tokenizer)     - Full expression parsing, logic operators, strings.
-  2. AST Nodes             - Variables, assignment, literals, functions.
+  1. Lexer (Tokenizer)     - Full expression parsing, floats, logic strings.
+  2. AST Nodes             - Variables, assignment, literals, multi-args.
   3. Parser                - Top-down Recursive Descent Parsing Engine.
   4. Interpreter (Runtime) - Dynamic Memory Space Environment Allocation.
 ===============================================================================
@@ -40,11 +40,10 @@ class Lexer:
         self.source_code = source_code
         self.tokens: List[Token] = []
         
-        # Comprehensive lexical match rules array
         rules = [
             ('COMMENT',    r'\(\([\s\S]*?\)\)'), 
             ('STRING',     r'"[^"\\]*(?:\\.[^"\\]*)*"|\'[^\'\\]*(?:\\.[^\'\\]*)*\''),
-            ('NUMBER',     r'-?\d+(?:\.\d+)?'), # Support floats and integers            
+            ('NUMBER',     r'-?\d+(?:\.\d+)?'),            
             ('ASSIGN',     r'='),
             ('IDENTIFIER', r'[a-zA-Z_][a-zA-Z0-9_]*'),
             ('LPAREN',     r'\('),
@@ -79,7 +78,7 @@ class Lexer:
                 raise SyntaxError(f"[Lexer Error] Unexpected character '{value}' found at line {line_num}, column {column}")
             else:
                 if kind == 'STRING':
-                    value = value[1:-1] # Slice off literal boundary quotation characters
+                    value = value[1:-1]
                 self.tokens.append(Token(kind, value, line_num, column))
                 
         self.tokens.append(Token('EOF', '', line_num, len(self.source_code) - line_start + 1))
@@ -146,7 +145,6 @@ class Parser:
         return statements
 
     def parse_statement(self) -> ASTNode:
-        # Check ahead to identify if we are dealing with a variable modification statement
         if self.peek().type == 'IDENTIFIER' and (self.pos + 1 < len(self.tokens)) and self.tokens[self.pos + 1].type == 'ASSIGN':
             ident_token = self.consume('IDENTIFIER')
             self.consume('ASSIGN')
@@ -185,7 +183,6 @@ class Parser:
             self.consume('STRING')
             return StringNode(token.value)
         elif token.type == 'IDENTIFIER':
-            # Is it a variable access placeholder or a stacked function reference parameter?
             if (self.pos + 1 < len(self.tokens)) and self.tokens[self.pos + 1].type == 'LPAREN':
                 return self.parse_call_expression()
             self.consume('IDENTIFIER')
@@ -211,11 +208,8 @@ class Interpreter:
         self.env = env
 
     def execute(self, statements: List[ASTNode]):
-        try:
-            for statement in statements:
-                self.visit(statement)
-        except Exception as e:
-            print(f"⚠️ Runtime Engine Execution Interrupted:\n-> {e}", file=sys.stderr)
+        for statement in statements:
+            self.visit(statement)
 
     def visit(self, node: ASTNode) -> Any:
         if isinstance(node, NumberNode):
@@ -242,50 +236,85 @@ class Interpreter:
 
 
 # =============================================================================
-# Speckle Massive Standard Lua-Style API Core Library Hooks
+# Speckle Standard API Methods (With Byte-Decoding Utilities)
 # =============================================================================
 
+# Core System IO
 def speckle_print(*args):
-    """Lua style print statement formatting output fields directly."""
-    output_string = " ".join(str(arg) for arg in args)
-    print(output_string)
+    print(" ".join(str(arg) for arg in args))
 
 def speckle_warn(*args):
-    """Outputs text styled inside warning diagnostic prefixes."""
-    output_string = " ".join(str(arg) for arg in args)
-    print(f"⚠️ [Speckle Warning] {output_string}", file=sys.stderr)
+    print(f"⚠️ [Speckle Warning] {" ".join(str(arg) for arg in args)}", file=sys.stderr)
 
 def speckle_clear():
-    """Wipes terminal clean."""
     print("\033[H\033[2J", end="")
 
 def speckle_send_chat(user: str, message: str):
-    """Simulates multi-user dynamic network server chat channels."""
     timestamp = datetime.datetime.now().strftime("%H:%M:%S")
     print(f"💬 [{timestamp}] [{user}]: {message}")
 
-def speckle_broadcast_event(event_name: str, numeric_payload: float):
-    """Simulates inter-process networking signals across server loops."""
-    print(f"📡 [Broadcast] Event '{event_name}' fired with code value: {numeric_payload}")
 
-def speckle_loop_step(variable_name: str, start: int, end: int, function_name: str, interpreter_instance: Interpreter):
-    """A high-level stepping loop that runs a mapped function on each iteration."""
-    print(f"🔁 [Loop Engine] Executing loop sequence control for mapping method: '{function_name}'")
-    for i in range(start, end + 1):
-        interpreter_instance.env.variables[variable_name] = i
-        if function_name in interpreter_instance.env.functions:
-            interpreter_instance.env.functions[function_name](i)
-        else:
-            raise NameError(f"Loop Routine Aborted: Function target execution handle '{function_name}' is missing.")
+# --- Advanced Processing Tools & Byte Decoders ---
+def ascii_textify(payload: str) -> str:
+    """
+    Parses a string containing numbers separated by backslashes (e.g. '110\\1\\1\\98\\101\\051')
+    and handles custom byte transformations, recovering the clean character values.
+    """
+    try:
+        # Split on backslash characters
+        segments = [s.strip() for s in payload.split('\\') if s.strip()]
+        decoded_chars = []
+        
+        for segment in segments:
+            # Handle placeholder indices, padding, or octal-style configurations safely
+            val = int(segment, 10)
+            decoded_chars.append(chr(val))
+            
+        result = "".join(decoded_chars)
+        print(f"🔑 [Textify Engine] Reconstructed Plain-Text: '{result}'")
+        return result
+    except Exception as decoding_error:
+        raise ValueError(f"Decryption Fail: Textify failed parsing structural chunk '{payload}'. Matrix: {decoding_error}")
 
-# Vector Graphics Rendering Array Modules
+def math_jumble_string(payload: str) -> str:
+    """Converts standard readable strings directly back into raw backslash-delimited decimals."""
+    jumbled = "\\".join(str(ord(char)) for char in payload)
+    print(f"🔒 [Jumble Engine] Scrambled Backslash Array: {jumbled}")
+    return jumbled
+
+def generate_junk_lines(count: int):
+    print(f"⚙️ [Metamorphic Engine] Injecting {count} dead instructions...")
+    junk_pool = ["_tmp = add(1, 2)", "_dummy = random_range(1, 100)", "_val = mul(5, 5)"]
+    for i in range(count):
+        print(f"   >> JUNK_OP_{i}: {random.choice(junk_pool)}")
+
+
+# --- Math & Banner Libraries ---
+def math_add(x: float, y: float) -> float: return x + y
+def math_sub(x: float, y: float) -> float: return x - y
+def math_mul(x: float, y: float) -> float: return x * y
+def math_div(x: float, y: float) -> float: return x / y if y != 0 else 0.0
+def math_rand(low: float, high: float) -> float: return random.uniform(low, high)
+def math_random_int(low: int, high: int) -> int: return random.randint(low, high)
+
+def make_ascii_banner(text: str):
+    border = "+" + "-" * (len(text) + 4) + "+"
+    print(border)
+    print(f"|  {text}  |")
+    print(border)
+
+def make_ascii_brick(width: int, height: int):
+    for _ in range(height): print("#" * width)
+
+
+# --- Native Turtle Vector Graphics Modules ---
 def init_canvas():
     turtle.setup(width=700, height=500)
     turtle.title("Speckle Engine Matrix Workspace")
     turtle.bgcolor("#0f0f17") 
     turtle.color("#cdd6f4")
     turtle.pencolor("#89b4fa") 
-    turtle.speed(0) # Maximum rendering acceleration speed
+    turtle.speed(0)
     turtle.shape("classic")
 
 def set_line_color(color: str):        turtle.pencolor(color)
@@ -294,80 +323,96 @@ def move_forward(distance: float):     turtle.forward(distance)
 def turn_left(degrees: float):         turtle.left(degrees)
 def turn_right(degrees: float):        turtle.right(degrees)
 
-# Extended Mathematics Modules
-def speckle_add(x: float, y: float) -> float: return x + y
-def speckle_sub(x: float, y: float) -> float: return x - y
-def speckle_mul(x: float, y: float) -> float: return x * y
-def speckle_div(x: float, y: float) -> float: return x / y if y != 0 else 0.0
-def speckle_rand(low: int, high: int) -> int: return random.randint(low, high)
-def speckle_sin(degrees: float) -> float:     return math.sin(math.radians(degrees))
+
+# =============================================================================
+# Injection Logic Setup Helper
+# =============================================================================
+def setup_environment() -> Interpreter:
+    env = Environment()
+    
+    # Core Operations
+    env.register_function("print", speckle_print)
+    env.register_function("warn", speckle_warn)
+    env.register_function("clear_console", speckle_clear)
+    env.register_function("send_chat", speckle_send_chat)
+    
+    # Textify & String Jumble Modules
+    env.register_function("ascii_textify", ascii_textify)
+    env.register_function("jumble_string", math_jumble_string)
+    env.register_function("inject_junk", generate_junk_lines)
+    env.register_function("ascii_banner", make_ascii_banner)
+    env.register_function("ascii_brick", make_ascii_brick)
+    
+    # Math Vector Pipeline
+    env.register_function("add", math_add)
+    env.register_function("sub", math_sub)
+    env.register_function("mul", math_mul)
+    env.register_function("div", math_div)
+    env.register_function("random_range", math_rand)
+    env.register_function("random_int", math_random_int)
+    
+    # Visual Canvas Actions
+    env.register_function("init_canvas", init_canvas)
+    env.register_function("set_line_color", set_line_color)
+    env.register_function("set_background_color", set_background_color)
+    env.register_forward = env.register_function("move_forward", move_forward)
+    env.register_function("turn_left", turn_left)
+    env.register_function("turn_right", turn_right)
+    
+    return Interpreter(env)
 
 
 # =============================================================================
-# CLI Orchestration Execution Pipeline Entry
+# REPL Console Command Prompt Loop Engine Mode
+# =============================================================================
+def run_repl_prompt(interpreter: Interpreter):
+    print("Speckle Language Shell Terminal Environment")
+    print("Copyright (c) 2026 Speckle LLC / n1nerlang. Type 'exit' to leave.\n")
+    
+    while True:
+        try:
+            input_line = input("spk > ").strip()
+            if input_line.lower() == "exit":
+                print("Closing environment instance session safely.")
+                break
+            if not input_line:
+                continue
+                
+            lexer = Lexer(input_line)
+            tokens = lexer.tokenize()
+            parser = Parser(tokens)
+            ast = parser.parse()
+            interpreter.execute(ast)
+            
+        except KeyboardInterrupt:
+            print("\nClosing environment instance session safely.")
+            break
+        except Exception as e:
+            print(f"🚨 Line execution faulted: {e}", file=sys.stderr)
+
+
+# =============================================================================
+# CLI Execution Entry
 # =============================================================================
 if __name__ == "__main__":
+    interpreter = setup_environment()
+
     if len(sys.argv) < 2:
-        print("❌ Runtime Startup Error: Missing file argument.")
-        print("Usage Checklist: python main.py <filename>.spk")
-        sys.exit(1)
-        
-    target_filepath = sys.argv[1]
-    
-    try:
-        with open(target_filepath, 'r', encoding='utf-8') as file:
-            speckle_payload = file.read()
-    except FileNotFoundError:
-        print(f"❌ IO Error: Target data track file not found: '{target_filepath}'")
-        sys.exit(1)
-
-    # Initialize Environment Spaces
-    runtime_env = Environment()
-    interpreter = Interpreter(runtime_env)
-
-    # Register Global IO & Networking Methods
-    runtime_env.register_function("print", speckle_print)
-    runtime_env.register_function("warn", speckle_warn)
-    runtime_env.register_function("clear_console", speckle_clear)
-    runtime_env.register_function("send_chat", speckle_send_chat)
-    runtime_env.register_function("broadcast_event", speckle_broadcast_event)
-    
-    # Register Core Math & Utility Operations
-    runtime_env.register_function("add", speckle_add)
-    runtime_env.register_function("sub", speckle_sub)
-    runtime_env.register_function("mul", speckle_mul)
-    runtime_env.register_function("div", speckle_div)
-    runtime_env.register_function("random_range", speckle_rand)
-    runtime_env.register_function("get_sin", speckle_sin)
-    
-    # Register Graphics Controls
-    runtime_env.register_function("init_canvas", init_canvas)
-    runtime_env.register_function("set_line_color", set_line_color)
-    runtime_env.register_function("set_background_color", set_background_color)
-    runtime_env.register_function("move_forward", move_forward)
-    runtime_env.register_function("turn_left", turn_left)
-    runtime_env.register_function("turn_right", turn_right)
-    
-    # Complex Iterative Functional Mapping Control Wrapper
-    runtime_env.register_function(
-        "run_loop_sequence", 
-        lambda var_name, start, end, func_name: speckle_loop_step(var_name, start, end, func_name, interpreter)
-    )
-
-    # Execute Compilation Stack Pipeline
-    try:
-        lexer = Lexer(speckle_payload)
-        token_stream = lexer.tokenize()
-        
-        parser = Parser(token_stream)
-        ast_tree = parser.parse()
-        
-        print("=======[ Speckle Engine Live Execution Stream ]=======")
-        interpreter.execute(ast_tree)
-        print("=====================================================")
-        
-        if turtle.getscreen()._canvas is not None:
-            turtle.done()
+        run_repl_prompt(interpreter)
+    else:
+        target_filepath = sys.argv[1]
+        try:
+            with open(target_filepath, 'r', encoding='utf-8') as file:
+                speckle_payload = file.read()
             
-    except Exception as compilation_error:
-        print(f"🚨 Compiler Compilation Pipeline Fault:\n{compilation_error}", file=sys.stderr)
+            lexer = Lexer(speckle_payload)
+            ast_tree = Parser(lexer.tokenize()).parse()
+            interpreter.execute(ast_tree)
+            
+            if turtle.getscreen()._canvas is not None:
+                turtle.done()
+        except FileNotFoundError:
+            print(f"❌ IO Operational Error: Target file path not found: '{target_filepath}'")
+            sys.exit(1)
+        except Exception as err:
+            print(f"🚨 Execution Fault Error:\n{err}", file=sys.stderr)
