@@ -1,7 +1,7 @@
 # 🌌 Speckle Programming Language
 
 [![Version](https://img.shields.io/badge/version-1.5.0b--beta-pink?style=plastic)](https://github.com/n1nerlang/speckle-lang)
-[![License](https://img.shields.io/badge/license-MIT-blue?style=plastic)](./LICENSE)
+[![License](https://img.shields.io/badge/license-GNU20&Lesser20&General20&Public20&License-blue?style=plastic)](./LICENSE)
 [![Organization](https://img.shields.io/badge/Org-n1nerlang-89b4fa?style=plastic)](https://github.com/n1nerlang)
 
 A fast, lightweight, and visual language framework built for structural matrix parsing, geometric rendering, and byte-level text obfuscation processing routines. Developed natively by **Speckle LLC** under the **n1nerlang** organization umbrella.
