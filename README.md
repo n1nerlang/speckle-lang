@@ -1,133 +1,101 @@
-# 🌌 Speckle Programming Language
 
-[![Version](https://img.shields.io/badge/version-1.5.0b--beta-pink?style=plastic)](https://github.com/n1nerlang/speckle-lang)
-[![License](https://img.shields.io/badge/license-GNU-Lesser-General-Public-License-green?style=plastic)](./LICENSE)
-[![Organization](https://img.shields.io/badge/Org-n1nerlang-89b4fa?style=plastic)](https://github.com/n1nerlang)
+# Speckle Coding Language
 
-A fast, lightweight, and visual language framework built for structural matrix parsing, geometric rendering, and byte-level text obfuscation processing routines. Developed natively by **Speckle LLC** under the **n1nerlang** organization umbrella.
+Speckle is a Low Level Language (Soon to be MLL for < 1.9x)
 
----
+## Features
 
-## 📖 Table of Contents
-1. [Core Architecture Overview](#-core-architecture-overview)
-2. [Version 1.5.0b Changelog](#%EF%B8%8F-version-150b-changelog)
-3. [Language API Reference](#-language-api-reference)
-4. [Installation & Operational Usage](#-installation--operational-usage)
-5. [Complete Verification Script](#-complete-verification-script)
+- More Easier than Lua 5.1 or Luau
+- Live previews
+- Fullscreen mode
+- Cross platform
 
----
 
-## 🔬 Core Architecture Overview
+## Badges
 
-Speckle operates via a strict linear compilation stack compiled entirely from scratch, optimizing standard AST transformations without relying on heavy external dependencies.
+[![LGPL License](https://img.shields.io/badge/license-LGPL-blue.svg)](http://www.gnu.org/licenses/lgpl-2.1)
 
-> 💡 **System Design Note:** Speckle treats statements as independent execution streams. Variables are bound to a global dynamic memory environment table during runtime, allowing loops and geometric functions to access mutable state instantaneously.
 
-### The Compilation Pipeline
-```text
-  [ Source Code (.spk) ]
-            │
-            ▼
-     [ Lexer Engine ]  ───────► Token Stream (Identifiers, Strings, Numbers)
-            │
-            ▼
-    [ Parser Engine ]  ───────► Abstract Syntax Tree (AST Nodes)
-            │
-            ▼
- [ Interpreter Runtime ] ─────► Environment Execution Memory Space
-```
+## Contributing
 
----
+Contributions are always welcome!
 
-## 🛠️ Version 1.5.0b Changelog
+See `contributing.md` for ways to get started.
 
-| Feature Matrix | Status | Execution Tier | Description |
-| :--- | :---: | :---: | :--- |
-| **`ascii_textify()`** | `RELEASED` | Byte Decoder | Reconstructs plain-text strings from backslash decimal arrays. |
-| **`jumble_string()`** | `RELEASED` | Obfuscator Core | Converts regular strings into secure, raw decimal sequences. |
-| **`inject_junk()`** | `RELEASED` | Metamorphic Engine | Spams dead calculations to disrupt external parsers. |
-| **Interactive REPL** | `RELEASED` | System Prompt | Allows users to test code directly line-by-line without saving a file. |
-| **Turtle Matrix** | `STABLE` | Graphics Vector | Maximum rendering speed acceleration for geometric workspaces. |
+Please adhere to this project's `code of conduct`.
 
----
 
-## ⚡ Language API Reference
+## Environment Variables
 
-### 1. Cryptographic & Core Byte Utilities
-* `ascii_textify(string)`: Takes an obfuscated array of character decimal numbers separated by backslashes and converts them back to plain-text string formatting variables.
-* `jumble_string(string)`: Reverses text strings into numeric backslash arrays.
-* `inject_junk(integer)`: Injects a stream of completely random dead operational functions to mask clean code behavior.
+To run this project, you will need to add the following PyPI or Python Versions
+### 1. Core Runtime Environment
+* **Python 3.8 to Python 3.11+**: The baseline compiler infrastructure relies entirely on native Python interpreter contexts. 
+* **Standard Libraries Required**:
+  * `sys` (Core system channel mapping)
+  * `re` (Lexer regular expression tokenizer matching)
+  * `math` (Trigonometric tracking calculations)
+  * `random` (Metamorphic junk and jumble generators)
+  * `tkinter` / `turtle` (Visual matrix canvas vector pipelines)
 
-### 2. Mathematics Vector Engine
-* `add(x, y)`, `sub(x, y)`, `mul(x, y)`, `div(x, y)`: Standalone mathematical calculation parameters.
-* `sin(degrees)`, `cos(degrees)`: High-level trigonometric alignment functions.
-* `random_int(low, high)`: Generates a completely randomized absolute integer between boundaries.
 
-### 3. Native Canvas Vector Drawing
-```lua
-init_canvas()                       (( Configures dark visual matrix window ))
-set_background_color("#0f0f17")     (( Modifies backdrop workspace canvas ))
-set_line_color("#89b4fa")           (( Sets trajectory brush hex color ))
-move_forward(100)                   (( Displaces cursor ahead linearly ))
-turn_left(90)                       (( Aligns vector heading angle ))
-```
+## Installation
 
----
+Install Speckle via `gh repo` and `python3` (required)
 
-## 🚀 Installation & Operational Usage
-
-Ensure you have **Python 3.8+** installed locally in your environment. Clone the module structure and run the compiler entry point:
-
-### Running the Live Interactive Shell (REPL)
-To drop into the command prompt framework immediately for fast, zero-file execution verification, run the script with **no arguments**:
 ```bash
-python main.py
+  gh repo clone n1nerlang/speckle-lang
+ python3 main.py (or add test.spk next to main.py)
+```
+    
+## FAQ
+
+#### Question 1
+
+Answer 1
+
+#### Question 2
+
+Answer 2
+
+
+![Logo](md-assets/logo.png)
+
+
+## Run Locally
+
+Clone the project and Run via `python3 (filename ex. main.py)`
+## Support
+
+For support, use Github Issues
+
+
+## Used By
+
+This project is used by the following **BIG** companies:
+
+- N/A
+- N/A
+
+
+## Roadmap
+
+- Additional browser support
+
+- Add more integrations
+
+
+## Running Tests
+
+To run tests, run the following command
+
+```
+tbd, no run command for this
 ```
 
-### Executing an Extracted File Payload
-To pass a complete compiled script containing multi-variable execution states, target the tracking extension:
-```bash
-python main.py test.spk
-```
 
----
+## Tech Stack
 
-## 📝 Complete Verification Script
+**Client:** Python
 
-Save this production code array inside your local repository as **`test.spk`** to execute a full integration test checking all features added in version `1.5.0b`:
+**Server:** JSON or Python idk
 
-```lua
-(( Speckle Complete Integration Framework Verification ))
-
-(( Phase 1: Verify Header Banners ))
-ascii_banner("SPECKLE ENGINE V1.5.0b")
-ascii_brick(24, 2)
-
-(( Phase 2: Decrypt Stream Strings Natively ))
-scrambled_key = "110\101\111\98\101\51"
-decrypted_handle = ascii_textify(scrambled_key)
-
-print("Decrypted System Target Handle Identity:")
-print(decrypted_handle)
-
-(( Phase 3: Deploy Security Smokescreens ))
-jumble_string("SecurePayloadString")
-inject_junk(3)
-
-(( Phase 4: Compute Matrix Orientations ))
-target_angle = random_int(45, 135)
-amplitude = sin(target_angle)
-warn("Dynamic waveform projection initialized successfully.")
-
-(( Phase 5: Initialize Visual Display Architecture ))
-init_canvas()
-set_background_color("#0b0b12")
-set_line_color("#f38ba8")
-move_forward(120)
-turn_right(target_angle)
-move_forward(80)
-```
-
----
-
-Built with ninerlang's Good Coding under the [n1nerlang](https://github.com/n1nerlang) user for **Speckle LLC.** Licensed under the [MIT License](./LICENSE).
