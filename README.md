@@ -130,4 +130,4 @@ move_forward(80)
 
 ---
 
-Built with 💻 by [lupsup39](https://tenringsofdoom1x.github.io) under the [n1nerlang](https://github.com/n1nerlang) organization for Speckle LLC. Licensed under the [MIT License](./LICENSE).
+Built with ninerlang's Good Coding under the [n1nerlang](https://github.com/n1nerlang) user for **Speckle LLC.** Licensed under the [MIT License](./LICENSE).
