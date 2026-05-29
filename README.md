@@ -2,10 +2,10 @@
 
 > A clean, lightweight, visual programming language built for speed, simplicity, and geometric creation.
 
-[![Language](https://img.shields.io/badge/Language-Speckle-89b4fa?style=for-the-badge)](https://github.com/n1nerlang/speckle-lang)
-[![Core Engine](https://img.shields.io/badge/Engine-Python_3-f9e2af?style=for-the-badge&logo=python)](https://www.python.org)
-[![Syntax Style](https://img.shields.io/badge/Syntax-Lua_Inspired-a6e3a1?style=for-the-badge&logo=lua)](https://www.lua.org)
-[![License](https://img.shields.io/badge/License-MIT-f38ba8?style=for-the-badge)](LICENSE)
+[![Language](https://img.shields.io/badge/Language-Speckle-89b4fa?style=plastic)](https://github.com/n1nerlang/speckle-lang)
+[![Core Engine](https://img.shields.io/badge/Engine-Python_3-f9e2af?style=plastic&logo=python)](https://www.python.org)
+[![Syntax Style](https://img.shields.io/badge/Syntax-Lua_Inspired-a6e3a1?style=plastic&logo=lua)](https://www.lua.org)
+[![License](https://img.shields.io/badge/License-MIT-f38ba8?style=plastic)](LICENSE)
 
 ---
 
