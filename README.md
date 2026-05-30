@@ -1,101 +1,85 @@
+## Speckle
 
-# Speckle Coding Language
+**Inspiration:**
 
-Speckle is a Low Level Language (Soon to be MLL for < 1.9x)
+This programming language draws significant inspiration from ![**Lua**](lua.org), a powerful and versatile scripting language known for its simplicity and embeddability. Our aim is to build upon Lua's strengths, offering an equally accessible and intuitive coding experience.
 
-## Features
+**Core Philosophy:**
 
-- More Easier than Lua 5.1 or Luau
-- Live previews
-- Fullscreen mode
-- Cross platform
+The driving principle behind this language is to provide an **easy way to code**. We believe that programming should be approachable, allowing individuals with diverse backgrounds and skill levels to learn, create, and innovate efficiently. This means prioritizing:
 
+* **Readability:** Code should be clear, concise, and easy to understand, minimizing cognitive load for developers. * **Simplicity:** Complex tasks should be achievable with straightforward syntax and minimal boilerplate. * **Expressiveness:** The language should empower developers to articulate their ideas effectively and elegantly. * **Performance:** While focusing on ease of use, we are also committed to delivering performant execution. * **Extensibility:** The language should be designed to be easily extended and integrated with other systems.
 
-## Badges
+**Key Features (Early Vision):**
 
-[![LGPL License](https://img.shields.io/badge/license-LGPL-blue.svg)](http://www.gnu.org/licenses/lgpl-2.1)
+Based on our Lua inspiration, we anticipate features such as:
 
+* **Lightweight Core:** A small and efficient runtime. * **Dynamic Typing:** Flexibility in variable types. * **Garbage Collection:** Automatic memory management. * **Powerful Table Abstraction:** Versatile data structures. * **Metatables:** Fine-grained control over object behavior. * **Simple Coroutines:** Support for concurrency. * **Embeddability:** Designed to be integrated into larger applications.
 
-## Contributing
+**Target Audience:**
 
-Contributions are always welcome!
+This language is intended for a broad audience, including:
 
-See `contributing.md` for ways to get started.
+* **Beginners:** Individuals new to programming seeking a gentle learning curve. * **Game Developers:** Those looking for a scripting language for game logic, AI, and UI. * **Embedded Systems Developers:** Projects requiring a small footprint and efficient execution. * **Application Developers:** Integrating scripting capabilities into larger software projects. * **Rapid Prototypers:** Quickly bringing ideas to life.
 
-Please adhere to this project's `code of conduct`.
+**Getting Started:**
 
+(This section would be populated with details on installation, basic syntax examples, and tutorials as the language develops.)
 
-## Environment Variables
+**Community and Contribution:**
 
-To run this project, you will need to add the following PyPI or Python Versions
-### 1. Core Runtime Environment
-* **Python 3.8 to Python 3.11+**: The baseline compiler infrastructure relies entirely on native Python interpreter contexts. 
-* **Standard Libraries Required**:
-  * `sys` (Core system channel mapping)
-  * `re` (Lexer regular expression tokenizer matching)
-  * `math` (Trigonometric tracking calculations)
-  * `random` (Metamorphic junk and jumble generators)
-  * `tkinter` / `turtle` (Visual matrix canvas vector pipelines)
+We envision fostering a vibrant and supportive community around this language. Contributions in the form of code, documentation, and feedback are highly encouraged.
 
+**Call to Action:**
 
-## Installation
+Join us in creating an easy and powerful way to code! Explore the possibilities, experiment with the language, and help shape its future.
 
-Install Speckle via `gh repo` and `python3` (required)
+---
 
-```bash
-  gh repo clone n1nerlang/speckle-lang
- python3 main.py (or add test.spk next to main.py)
-```
-    
-## FAQ
+**Further details to be added as development progresses:**
 
-#### Question 1
+* Specific syntax examples. * Standard library overview. * Tooling (IDE support, debuggers, package managers). * Detailed performance benchmarks. * Use case studies and examples. * Roadmap and future development plans.
 
-Answer 1
+2 daily uses left.
+Go Premium
+Get Started
+— it's free
+Why choose ProWritingAid?
+Illustration of female knight correcting a piece of writing
+In-depth analysis & actionable feedback
 
-#### Question 2
+Tailored analytical tools assess every aspect of your writing in seconds and teach you how to improve.
 
-Answer 2
+Illustration of ghost and paper planes download in progress
+Works with your favorite writing app
 
+ProWritingAid works wherever you do, fitting neatly into any writing app like Word, Google Docs, or Scrivener.
 
-![Logo](md-assets/logo.png)
+Illustration of a dragon protecting a stack of books
+Your writing is safe with ProWritingAid
 
+Your writing is sacred, so we use bank-level security to keep it safe and never use your text to train our algorithms.
 
-## Run Locally
+Get Started
+ — it's free
+View Plans
+Key benefits of our text expander
+Discover different modes
+Expand text, improve readability, or add descriptive detail—the choice is yours.
 
-Clone the project and Run via `python3 (filename ex. main.py)`
-## Support
+Save time
+Lengthen text with the click of a button. If you’re not satisfied with the result, simply try again.
 
-For support, use Github Issues
+Strengthen your text
+Enhance the structure and vocabulary of your text without removing key information.
 
-
-## Used By
-
-This project is used by the following **BIG** companies:
-
-- N/A
-- N/A
-
-
-## Roadmap
-
-- Additional browser support
-
-- Add more integrations
-
-
-## Running Tests
-
-To run tests, run the following command
-
-```
-tbd, no run command for this
-```
-
-
-## Tech Stack
-
-**Client:** Python
-
-**Server:** JSON or Python idk
-
+Get Started
+— it's free
+View Plans
+Trusted by industry leaders
+Amazon logo
+Accenture logo
+Microsoft logo
+Zurich Foundation logo
+Write faster and better with ProWritingAid
+ProWritingAid does more than expand text. It improves vocabulary, sentence structure
