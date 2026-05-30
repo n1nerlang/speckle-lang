@@ -1,0 +1,8 @@
+# 1. Define the custom language parameters for GitHub's engine
+*.spk linguist-language=Speckle
+*.speckle linguist-language=Speckle
+
+# 2. Map Speckle to use standard generic programming colors for syntax highlighting
+[linguist-language=Speckle]
+type=programming
+color=#89b4fa
