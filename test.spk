@@ -9,7 +9,7 @@ print("Initializing connection interface system pipelines...")
 warn("Connection pathway is unencrypted. Deploying local simulation protocols...")
 
 send_chat(username, "Hello world! This is my brand-new language script!")
-send_chat("Specky", "Speckle is a LLL (Low Level Language) Soon to be a LLL (Medium Level Language)!")
+send_chat("Specky", "Speckle is a LLL (Low Level Language) Soon to be a MLL (Medium Level Language)!")
 
 (( 3. Multi-Variable Arithmetic Tracking Engine ))
 base_scalar = 45
