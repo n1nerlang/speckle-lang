@@ -2,7 +2,7 @@
 
 **Inspiration:**
 
-This programming language draws significant inspiration from ![**Lua**](lua.org), a powerful and versatile scripting language known for its simplicity and embeddability. Our aim is to build upon Lua's strengths, offering an equally accessible and intuitive coding experience.
+This programming language draws significant inspiration from ![**Lua**](https://lua.org/), a powerful and versatile scripting language known for its simplicity and embeddability. Our aim is to build upon Lua's strengths, offering an equally accessible and intuitive coding experience.
 
 **Core Philosophy:**
 
